@@ -36,20 +36,27 @@ class EventsControllerTest {
     void addEvent() throws Exception {
         mockMvc.perform(post("/api/events")
                         .header("Content-Type", "application/json")
-                        .content("{\n" +
-                                "   \"name\": \"Backing fest\",\n" +
-                                "   \"description\": \"Bread backery camp\"\n" +
-                                "   \"author\": \"Andrii\"\n" +
-                                "   \"place\": \"OsterVanBach, 10\"\n" +
-                                "   \"quantityOfMembers\": \"10\"\n" +
-                                "   \"photo\": \"no\"\n" +
-                                "   \"date\": \"01.01.2023\"\n" +
+                        .content("\n" +
+                                "{\n" +
+                                "  \"name\": \"Circus\",\n" +
+                                "  \"description\": \"Kids circus\",\n" +
+                                "  \"author\": \"Andrii\",\n" +
+                                "  \"place\": \"Bremen, CircusHof, 11\",\n" +
+                                "  \"quantityOfMembers\": \"250\",\n" +
+                                "  \"photo\": \"added photo #2\",\n" +
+                                "  \"date\": \"01/09/2023\"\n" +
+                                "\n" +
                                 "}"))
-
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id", is(1)))
-                .andExpect(jsonPath("$.place", is("OsterVanBach, 10")))
+                .andExpect(jsonPath("$.place", is("Bremen, CircusHof, 11")))
                 .andExpect(jsonPath("$.author", is("Andrii")))
                 .andExpect(jsonPath("$.status", is("EXPECTED")));
     }
+
+    //TODO тесты для евентов дописать
 }
+
+
+
+

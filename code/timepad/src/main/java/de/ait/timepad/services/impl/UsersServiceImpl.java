@@ -1,17 +1,18 @@
 package de.ait.timepad.services.impl;
 
 import de.ait.timepad.dto.NewUserDto;
+import de.ait.timepad.dto.UpdateUserDto;
 import de.ait.timepad.dto.UserDto;
 import de.ait.timepad.dto.UsersDto;
+import de.ait.timepad.exeptions.ForbiddenOperationException;
+import de.ait.timepad.exeptions.NotFoundException;
 import de.ait.timepad.models.User;
 import de.ait.timepad.repositories.UsersRepository;
 import de.ait.timepad.services.UsersService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static de.ait.timepad.dto.UserDto.from;
 
@@ -55,5 +56,38 @@ public class UsersServiceImpl implements UsersService {
                 .users(from(users))
                 .count(users.size())
                 .build();
+    }
+
+    @Override
+    public UserDto deleteUser(Long userId) {
+//        Optional<User> user = usersRepository.findById(userId);
+//        if (user.isEmpty()) {
+//            throw new NotFoundException("User with id <" + userId + "> not found");
+//        }
+//        usersRepository.delete(user.get());
+
+        User user = getUserFromRepository(userId);
+        usersRepository.delete(user);
+
+        return from(user);
+    }
+
+
+    @Override
+    public UserDto updateUser(Long userId, UpdateUserDto updateUser) {
+        User user = getUserFromRepository(userId);
+        if(updateUser.getNewRole().equals("ADMIN")){
+            throw new ForbiddenOperationException("Role change to ADMIN is not allowed");
+        }
+        user.setState(User.State.valueOf(updateUser.getNewState()));
+        user.setRole(User.Role.valueOf(updateUser.getNewRole()));
+        usersRepository.save(user);
+        return from(user);
+    }
+
+
+    private User getUserFromRepository(Long userId) {
+        return usersRepository.findById(userId).orElseThrow(
+                () -> new NotFoundException("User with id <" + userId + "> not found"));
     }
 }

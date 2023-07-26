@@ -1,6 +1,7 @@
 package de.ait.timepad.dto;
 
 import de.ait.timepad.models.User;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,9 +21,17 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @Builder
 public class UserDto {
+
+    @Schema(description = "Users ID", example = "1")
     private Long id;
+
+    @Schema(description = "Users E-mail", example = "simple@gmail.com")
     private String email;
+
+    @Schema(description = "Users role: ADMIN, USER, MANAGER ", example = "ADMIN")
     private String role;
+
+    @Schema(description = "Users state - NOT_CONFIRMED, CONFIRMED, BANNED, DELETED", example = "CONFIRMED")
     private String state;
 
     public static UserDto from(User user) {

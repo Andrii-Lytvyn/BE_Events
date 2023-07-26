@@ -1,0 +1,94 @@
+### Добавление Марселя
+
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "email": "sidikov.marsel@gmail.com",
+  "password": "qwerty007"
+}
+
+### Добавление Алишера
+
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "email": "alisher@gmail.com",
+  "password": "qwerty008"
+}
+
+
+### Получение всех пользователей
+
+GET localhost:8080/api/users
+
+### Удаление пользователя
+
+DELETE localhost:8080/api/users/1
+
+
+### Обновление Марселя
+
+PUT http://localhost:8080/api/users/1
+Content-Type: application/json
+
+{
+  "newRole" : "MANAGER",
+  "newState" : "BANNED"
+}
+
+### Обновление Алишера
+
+PUT http://localhost:8080/api/users/2
+Content-Type: application/json
+
+{
+  "newRole" : "ADMIN",
+  "newState" : "BANNED"
+}
+
+
+
+### Создание события №1
+
+POST http://localhost:8080/api/events
+Content-Type: application/json
+
+{
+  "name": "Wine festival",
+  "description": "Many local winemakers",
+  "author": "Andrii",
+  "place": "Berlin, Winehof, 8",
+  "quantityOfMembers": "25",
+  "photo": "added photo",
+  "date": "01/08/2023"
+
+}
+
+### Создание события №2
+
+POST http://localhost:8080/api/events
+Content-Type: application/json
+
+{
+  "name": "Circus",
+  "description": "Kids circus",
+  "author": "Andrii",
+  "place": "Bremen, CircusHof, 11",
+  "quantityOfMembers": "250",
+  "photo": "added photo #2",
+  "date": "01/09/2023"
+
+}
+
+
+
+### Получение всех событий
+
+GET localhost:8080/api/events
+
+
+### Удаление события
+
+DELETE localhost:8080/api/events/100

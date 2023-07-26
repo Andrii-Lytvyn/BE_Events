@@ -23,6 +23,33 @@ Content-Type: application/json
 
 GET localhost:8080/api/users
 
+### Удаление пользователя
+
+DELETE localhost:8080/api/users/1
+
+
+### Обновление Марселя
+
+PUT http://localhost:8080/api/users/1
+Content-Type: application/json
+
+{
+  "newRole" : "MANAGER",
+  "newState" : "BANNED"
+}
+
+### Обновление Алишера
+
+PUT http://localhost:8080/api/users/2
+Content-Type: application/json
+
+{
+  "newRole" : "ADMIN",
+  "newState" : "BANNED"
+}
+
+
+
 ### Создание события №1
 
 POST http://localhost:8080/api/events
@@ -60,3 +87,17 @@ Content-Type: application/json
 ### Получение всех событий
 
 GET localhost:8080/api/events
+
+
+### Удаление события
+
+DELETE localhost:8080/api/events/100
+
+### Обновление события №1
+
+PUT localhost:8080/api/events/1
+Content-Type: application/json
+
+{
+  "newStatus" : "ENDED"
+}
