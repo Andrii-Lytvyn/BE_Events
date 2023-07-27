@@ -92,3 +92,12 @@ GET localhost:8080/api/events
 ### Удаление события
 
 DELETE localhost:8080/api/events/100
+
+### Обновление события №1
+
+PUT localhost:8080/api/events/1
+Content-Type: application/json
+
+{
+  "newStatus" : "ENDED"
+}

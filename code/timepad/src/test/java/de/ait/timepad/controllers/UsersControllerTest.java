@@ -91,9 +91,45 @@ class UsersControllerTest {
 
     @Nested
     @DisplayName("updateUser() method is works: ")
-    class UpdateUserTests{
+    class UpdateUserTests {
+        @Test
+        void update_exist_user() throws Exception {
+            usersRepository.save(User.builder().state(User.State.NOT_CONFIRMED).role(User.Role.USER).build());
 
+            mockMvc.perform(put("/api/users/1")
+                            .header("Content-Type", "application/json")
+                            .content("{\n" +
+                                    "  \"newRole\" : \"MANAGER\",\n" +
+                                    "  \"newState\" : \"BANNED\"\n" +
+                                    "}\n"))
+                    .andExpect(status().isOk())
+                    .andExpect(jsonPath("$.id", is(1)))
+                    .andExpect(jsonPath("$.state", is("BANNED")))
+                    .andExpect(jsonPath("$.role", is("MANAGER")));
+        }
 
+        @Test
+        void update_not_exist_user() throws Exception {
+            mockMvc.perform(put("/api/users/1").header("Content-Type", "application/json")
+                            .content("{\n" +
+                                    "  \"newRole\" : \"MANAGER\",\n" +
+                                    "  \"newState\" : \"BANNED\"\n" +
+                                    "}\n"))
+                    .andExpect(status().isNotFound());
+
+        }
+
+        @Test
+        void update_user_as_admin() throws Exception {
+            usersRepository.save(User.builder().state(User.State.NOT_CONFIRMED).role(User.Role.USER).build());
+            mockMvc.perform(put("/api/users/1").header("Content-Type", "application/json")
+                            .content("{\n" +
+                                    "  \"newRole\" : \"ADMIN\",\n" +
+                                    "  \"newState\" : \"BANNED\"\n" +
+                                    "}\n"))
+                    .andExpect(status().isForbidden());
+
+        }
     }
 
 }
