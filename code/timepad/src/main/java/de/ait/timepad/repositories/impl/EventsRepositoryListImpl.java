@@ -14,19 +14,13 @@ public class EventsRepositoryListImpl implements EventsRepository {
     private static List<Event> events = new ArrayList<>();
 
     @Override
-    public void saveEvent(Event event) {
-        if (event.getId() == null) {
+    public void save(Event event) {
             event.setId((long) events.size() + 1);
             events.add(event);
-        }else
-        {
-             //TODO: обновляем, но тут не надо, т.к. это список объектов
-            //если это БД или файл то обновляем в хранилище
-        }
     }
 
     @Override
-    public List<Event> findAllEvents() {
+    public List<Event> findAll() {
         return new ArrayList<>(events);
     }
 
@@ -41,7 +35,7 @@ public class EventsRepositoryListImpl implements EventsRepository {
     }
 
     @Override
-    public void clearEvents() {
+    public void clear() {
         events.clear();
     }
 

@@ -26,7 +26,7 @@ class EventsControllerTest {
 
     @BeforeEach
     public void setUp() {
-        eventsRepository.clearEvents();
+        eventsRepository.clear();
     }
 
     @Nested
@@ -61,8 +61,8 @@ class EventsControllerTest {
     class GetAllEventsTests {
         @Test
         void get_all_events() throws Exception {
-            eventsRepository.saveEvent(Event.builder().status(Event.Status.EXPECTED).build());
-            eventsRepository.saveEvent(Event.builder().status(Event.Status.EXPECTED).build());
+            eventsRepository.save(Event.builder().status(Event.Status.EXPECTED).build());
+            eventsRepository.save(Event.builder().status(Event.Status.EXPECTED).build());
 
             mockMvc.perform(get("/api/events"))
                     .andExpect(status().isOk())
@@ -78,7 +78,7 @@ class EventsControllerTest {
     class DeleteEventTests {
         @Test
         void delete_exists_event() throws Exception {
-            eventsRepository.saveEvent(Event.builder().status(Event.Status.EXPECTED).build());
+            eventsRepository.save(Event.builder().status(Event.Status.EXPECTED).build());
 
             mockMvc.perform(delete("/api/events/1"))
                     .andExpect(status().isOk());
@@ -98,7 +98,7 @@ class EventsControllerTest {
     class UpdateEventTests {
         @Test
         void update_exist_event() throws Exception {
-            eventsRepository.saveEvent(Event.builder().status(Event.Status.EXPECTED).build());
+            eventsRepository.save(Event.builder().status(Event.Status.EXPECTED).build());
 
             mockMvc.perform(put("/api/events/1")
                             .header("Content-Type", "application/json")

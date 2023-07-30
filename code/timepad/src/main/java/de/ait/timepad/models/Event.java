@@ -20,7 +20,7 @@ public class Event {
     }
     private Long id;
     private String name;
-    private String quantityOfMembers;
+    private Integer quantityOfMembers;
     private String place;
     private String description;
     private String author;

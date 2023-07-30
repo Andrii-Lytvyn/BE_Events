@@ -18,12 +18,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Schema(description = "Статьи пользователя")
+@Schema(description = "Users articles")
 public class ArticlesDto {
 
-    @Schema(description = "Список статей")
+    @Schema(description = "Article list")
     private List<ArticleDto> articles;
 
-    @Schema(description = "Количество статей пользователя", example = "2")
+    @Schema(description = "Number of user's articles", example = "2")
     private Integer count;
 }

@@ -14,19 +14,13 @@ import io.swagger.v3.oas.annotations.tags.Tags;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-/**
- * 7/27/2023
- * REST API
- *
- * @author Marsel Sidikov (AIT TR)
- */
 @Tags(value = {
         @Tag(name = "Articles")
 })
 @RequestMapping("/api/articles")
 public interface ArticlesApi {
 
-    @Operation(summary = "Add article about User", description = "Доступно только всем пользователям")
+    @Operation(summary = "Add article about User", description = "Everybody can add news")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "422", description = "Пользователь с указанным ID отсутствует в системе",
                     content = {
@@ -49,7 +43,7 @@ public interface ArticlesApi {
                     })
     })
     @GetMapping
-    ArticlesDto getArticles(@Parameter(description = "Год", example = "2022") @RequestParam(value = "year", required = false) Integer year,
-                            @Parameter(description = "Месяц", example = "2") @RequestParam(value = "month", required = false) Integer month,
-                            @Parameter(description = "День", example = "2") @RequestParam(value = "day", required = false) Integer day);
+    ArticlesDto getArticles(@Parameter(description = "Year", example = "2022") @RequestParam(value = "year", required = false) Integer year,
+                            @Parameter(description = "Month", example = "2") @RequestParam(value = "month", required = false) Integer month,
+                            @Parameter(description = "Day", example = "2") @RequestParam(value = "day", required = false) Integer day);
 }

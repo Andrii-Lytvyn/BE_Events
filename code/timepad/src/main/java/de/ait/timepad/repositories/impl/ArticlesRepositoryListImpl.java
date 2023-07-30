@@ -10,12 +10,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-/**
- * 7/27/2023
- * REST API
- *
- * @author Marsel Sidikov (AIT TR)
- */
 @Repository
 public class ArticlesRepositoryListImpl implements ArticlesRepository {
 

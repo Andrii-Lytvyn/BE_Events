@@ -11,4 +11,6 @@ public interface CrudRepository<T> {
     Optional<T> findById(Long id);
 
     void delete(T entity);
+
+    void clear();
 }

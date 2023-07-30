@@ -10,15 +10,15 @@ import lombok.Data;
  * @author Marsel Sidikov (AIT TR)
  */
 @Data
-@Schema(description = "Добавляемая статья")
+@Schema(description = "Adding Article")
 public class NewArticleDto {
 
-    @Schema(description = "Текст статьи", example = "Текст о пользователе...")
+    @Schema(description = "Article's text", example = "Text about user...")
     private String text;
 
-    @Schema(description = "Идентификатор пользователя", example = "1")
+    @Schema(description = "Users ID", example = "1")
     private Long aboutUserId;
 
-    @Schema(description = "Дата публикации в формате YYYY-MM-DD", example = "2022-02-02")
+    @Schema(description = "Publishing date in format YYYY-MM-DD", example = "2022-02-02")
     private String publishDate;
 }
