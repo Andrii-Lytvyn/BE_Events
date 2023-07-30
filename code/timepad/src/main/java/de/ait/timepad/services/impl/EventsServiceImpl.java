@@ -4,7 +4,7 @@ import de.ait.timepad.dto.EventDto;
 import de.ait.timepad.dto.EventsDto;
 import de.ait.timepad.dto.NewEventDto;
 import de.ait.timepad.dto.UpdateEventDto;
-import de.ait.timepad.exeptions.NotFoundException;
+import de.ait.timepad.exceptions.NotFoundException;
 import de.ait.timepad.models.Event;
 import de.ait.timepad.repositories.EventsRepository;
 import de.ait.timepad.services.EventsService;

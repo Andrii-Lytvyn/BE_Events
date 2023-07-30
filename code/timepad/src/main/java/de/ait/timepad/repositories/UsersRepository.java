@@ -5,14 +5,9 @@ import de.ait.timepad.models.User;
 import java.util.List;
 import java.util.Optional;
 
-public interface UsersRepository {
-    void save(User user);
+public interface UsersRepository extends CrudRepository<User> {
 
-    List<User> findAll();
-    Optional<User> findById(Long id);
-
-    //TODO Delete when we add DB
+    // TODO: убрать метод, как только подключим базы данных
     void clear();
 
-    void delete(User user);
 }

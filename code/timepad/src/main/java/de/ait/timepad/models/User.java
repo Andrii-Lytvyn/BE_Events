@@ -4,17 +4,12 @@ import lombok.*;
 
 import java.util.List;
 
-/**
- * 7/21/2023
- * REST API
- *
- * @author Marsel Sidikov (AIT TR)
- */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@EqualsAndHashCode(exclude = "events")
+//@EqualsAndHashCode(exclude = "events")
+@EqualsAndHashCode(exclude = "articles")
 public class User {
 
     public enum Role {
@@ -39,4 +34,5 @@ public class User {
     private State state;
 
     private List<Event> events;
+    private List<Article> articles;
 }

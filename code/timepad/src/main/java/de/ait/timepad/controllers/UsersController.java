@@ -1,10 +1,7 @@
 package de.ait.timepad.controllers;
 
 import de.ait.timepad.controllers.api.UsersApi;
-import de.ait.timepad.dto.NewUserDto;
-import de.ait.timepad.dto.UpdateUserDto;
-import de.ait.timepad.dto.UserDto;
-import de.ait.timepad.dto.UsersDto;
+import de.ait.timepad.dto.*;
 import de.ait.timepad.services.UsersService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,5 +31,14 @@ public class UsersController implements UsersApi {
     @Override
     public UserDto updateUser(Long userId, UpdateUserDto updateUser) {
         return usersService.updateUser(userId,updateUser);
+    }
+    @Override
+    public UserDto getUser(Long userId) {
+        return usersService.getUser(userId);
+    }
+
+    @Override
+    public ArticlesDto getArticlesOfUser(Long userId) {
+        return usersService.getArticlesOfUser(userId);
     }
 }

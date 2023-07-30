@@ -1,4 +1,4 @@
-package de.ait.timepad.exeptions;
+package de.ait.timepad.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
