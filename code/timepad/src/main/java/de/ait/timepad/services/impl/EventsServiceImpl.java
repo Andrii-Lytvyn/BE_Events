@@ -9,8 +9,11 @@ import de.ait.timepad.models.Event;
 import de.ait.timepad.repositories.EventsRepository;
 import de.ait.timepad.services.EventsService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.PageRequest;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 import static de.ait.timepad.dto.EventDto.from;
@@ -68,8 +71,32 @@ public class EventsServiceImpl implements EventsService {
         return from(event);
     }
 
+    @Override
+    public EventsDto getPaginatedEvents(int page, int size) {
+        List<Event> events = eventsRepository.findAll();
+        int startIndex = page*size;
+        int endIndex = Math.min(startIndex + size, events.size());
+
+        if(startIndex >=endIndex){
+            return (EventsDto) List.of();// Возвращаем пустой список, если указанный диапазон выходит за пределы списка
+        }
+
+        List<Event> paginatedEvent=events.subList(startIndex,endIndex);
+
+        return EventsDto.builder()
+                .events(from(paginatedEvent))
+                .count(paginatedEvent.size())
+                .build();
+    }
+
+
     private Event getEventFromRepository(Long eventId) {
         return eventsRepository.findById(eventId).orElseThrow(
                 () -> new NotFoundException("Event with id <" + eventId + "> not found"));
     }
+
+//////////////////////////////////////////////
+
+
+
 }

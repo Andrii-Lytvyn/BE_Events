@@ -1,5 +1,5 @@
 
-### Создание события №1
+### Add event №1
 
 POST http://localhost:8080/api/events
 Content-Type: application/json
@@ -15,7 +15,7 @@ Content-Type: application/json
 
 }
 
-### Создание события №2
+### Add event №2
 
 POST http://localhost:8080/api/events
 Content-Type: application/json
@@ -31,18 +31,48 @@ Content-Type: application/json
 
 }
 
+### Add event №3
 
+POST http://localhost:8080/api/events
+Content-Type: application/json
 
-### Получение всех событий
+{
+  "name": "Karaoke",
+  "description": "Singing Song",
+  "author": "Joseph",
+  "place": "Amsterdam, Sing allee, 5",
+  "quantityOfMembers": "12",
+  "photo": "added photo.png",
+  "date": "02/04/2022"
+
+}
+
+### Add event №4
+
+POST http://localhost:8080/api/events
+Content-Type: application/json
+
+{
+  "name": "Beach Party",
+  "description": "Dancing",
+  "author": "Barbara Roth",
+  "place": "Gdansk beach",
+  "quantityOfMembers": "120",
+  "photo": "added photo.png",
+  "date": "03/08/2023"
+
+}
+
+### Get all events
 
 GET localhost:8080/api/events
 
 
-### Удаление события
+### Delete Event
 
 DELETE localhost:8080/api/events/100
 
-### Обновление события №1
+### Update event №1
 
 PUT localhost:8080/api/events/1
 Content-Type: application/json
@@ -50,3 +80,8 @@ Content-Type: application/json
 {
   "newStatus" : "ENDED"
 }
+
+
+### Get paginated event
+
+GET localhost:8080/api/events/paginated?page=1&size=2

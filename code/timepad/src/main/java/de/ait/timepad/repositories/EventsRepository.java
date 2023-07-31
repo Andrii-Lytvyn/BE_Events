@@ -13,5 +13,7 @@ public interface EventsRepository {
     void clear();
 
     void delete(Event event);
+
+
 }
 

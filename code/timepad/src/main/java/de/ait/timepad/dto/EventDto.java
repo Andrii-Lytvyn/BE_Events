@@ -42,4 +42,6 @@ public class EventDto {
                 .map(EventDto::from)
                 .collect(Collectors.toList());
     }
+
+
 }

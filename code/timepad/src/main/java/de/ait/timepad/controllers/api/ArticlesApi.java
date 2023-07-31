@@ -42,6 +42,8 @@ public interface ArticlesApi {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = ArticlesDto.class))
                     })
     })
+
+
     @GetMapping
     ArticlesDto getArticles(@Parameter(description = "Year", example = "2022") @RequestParam(value = "year", required = false) Integer year,
                             @Parameter(description = "Month", example = "2") @RequestParam(value = "month", required = false) Integer month,

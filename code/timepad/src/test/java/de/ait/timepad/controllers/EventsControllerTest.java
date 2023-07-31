@@ -106,7 +106,7 @@ class EventsControllerTest {
                                     "  \"newStatus\" : \"ENDED\"\n" +
                                     "}"))
                     .andExpect(status().isOk())
-                    .andExpect(jsonPath("$.id", is(1)))
+                    .andExpect(jsonPath("$.id", is(2)))
                     .andExpect(jsonPath("$.status", is("ENDED")));
 
         }
